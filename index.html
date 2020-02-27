@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Punycode (IDN) conversion</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js"></script>
+<script>
+function hankaku2Zenkaku(str) {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９\－]/g, function(s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+}
+</script>
+<style>
+input
+{
+    width: 100%;
+    padding: 3px;
+    font-size: 1.25em;
+}
+</style>
+</head>
+<body>
+<form>
+  <h1>Punycode (IDN) conversion</h1>
+  <p>
+    Unicode Domain<br />
+    <small>(e.g. はじめよう.みんな) </small><br />
+    <input type="text" id="c-domain" name="c-domain" />
+  </p>
+  <p>
+    Ascii Punycode<br />
+    <small>(e.g. xn--p8j9a0d9c9a.xn--q9jyb4c)</small><br />
+    <input type="text" id="c-punycode" name="c-punycode" />
+  </p>
+</form>
+<script>
+$( function() {
+  $('#c-domain').keyup(function() {
+    $('#c-punycode').val(punycode.toASCII(hankaku2Zenkaku($("#c-domain").val())));
+  });
+  $('#c-punycode').keyup(function() {
+    $('#c-domain').val(punycode.toUnicode(hankaku2Zenkaku($("#c-punycode").val())));
+  });
+});
+</script>
+</body>
+</html>
