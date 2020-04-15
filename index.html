@@ -8,7 +8,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js"></script>
 <script>
-function hankaku2Zenkaku(str) {
+function zenkaku2hankaku(str) {
     return str.replace(/[Ａ-Ｚａ-ｚ０-９\－]/g, function(s) {
         return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
     });
@@ -46,10 +46,10 @@ input
 <script>
 $( function() {
   $('#c-domain').keyup(function() {
-    $('#c-punycode').val(punycode.toASCII(hankaku2Zenkaku($("#c-domain").val())));
+    $('#c-punycode').val(punycode.toASCII(zenkaku2hankaku($("#c-domain").val())));
   });
   $('#c-punycode').keyup(function() {
-    $('#c-domain').val(punycode.toUnicode(hankaku2Zenkaku($("#c-punycode").val())));
+    $('#c-domain').val(punycode.toUnicode(zenkaku2hankaku($("#c-punycode").val())));
   });
 });
 </script>
