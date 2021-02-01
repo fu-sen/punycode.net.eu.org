@@ -1,7 +1,6 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="google-site-verification" content="RRW1YgxIveoxqxJJ-KPVwQDsH3dMjXYVRxdmWIXrZR4" />
 <link rel="canonical" href="https://punycode.net.eu.org/" />
 <title>Punycode (IDN) conversion</title>
@@ -14,6 +13,60 @@ function zenkaku2hankaku(str) {
     });
 }
 </script>
+</head>
+<body>
+<textarea theme="spacelab">
+<h1>Punycode (IDN) conversion</h1>
+
+<form>
+  <p>
+    <strong>Unicode Domain Name</strong><br />
+    <small>(e.g. はじめよう.みんな) </small><br />
+    <input type="text" id="c-domain" name="c-domain" />
+  </p>
+  <p>
+    <strong>Ascii Punycode</strong><br />
+    <small>(e.g. xn--p8j9a0d9c9a.xn--q9jyb4c)</small><br />
+    <input type="text" id="c-punycode" name="c-punycode" />
+  </p>
+  <p>
+    <a href="https://github.com/fu-sen/punycode.net.eu.org">
+    Source (GitHub)</a> - 
+    <a href="https://glitch.com/edit/#!/punycode">
+    Simple Source (Glitch)</a> - 
+    <a href="https://domain.jp.net/punycode/">
+    日本語</a>
+  </p>
+</form>
+
+___
+
+<h2 id="what-is-punycode">What is Punycode?</h2>
+
+Punycode is adopted for the Internationalized domain name.  
+t converts multilingual characters expressed in Unicode into alphanumeric and hyphen ASCII codes.
+
+[Punycode | Wikipedia](https://en.wikipedia.org/wiki/Punycode)
+
+___
+
+<h2 id="sample">Sample of Internationalized domain name</h2>
+
+<h3 id="japanese">Japanese 日本語</h3>
+
+|Unicode Domain Name|Ascii Punycode|Description|
+|-------------------|--------------|-----------|
+|[はじめよう.みんな](https://xn--p8j9a0d9c9a.xn--q9jyb4c/)|xn--p8j9a0d9c9a.xn--q9jyb4c|Managed by Google Registry|
+|[日本語.jp](https://xn--wgv71a119e.jp/)|xn--wgv71a119e.jp||
+
+<h3 id="emoji">emoji 絵文字</h3>
+
+|Unicode Domain Name|Ascii Punycode|Description|
+|-------------------|--------------|-----------|
+|[💩.la](https://xn--ls8h.la/)|xn--ls8h.la|This is said to be the world's first emoji domain|
+
+</textarea>
+<script src="https://strapdownjs.com/v/0.2/strapdown.js"></script>
 <style>
 input
 {
@@ -22,27 +75,6 @@ input
     font-size: 1.25em;
 }
 </style>
-</head>
-<body>
-<form>
-  <h1>Punycode (IDN) conversion</h1>
-  <p>
-    Unicode Domain<br />
-    <small>(e.g. はじめよう.みんな) </small><br />
-    <input type="text" id="c-domain" name="c-domain" />
-  </p>
-  <p>
-    Ascii Punycode<br />
-    <small>(e.g. xn--p8j9a0d9c9a.xn--q9jyb4c)</small><br />
-    <input type="text" id="c-punycode" name="c-punycode" />
-  </p>
-  <p>
-    <a href="https://github.com/fu-sen/punycode.net.eu.org">
-    Source (GitHub)</a>
-    <a href="https://domain.jp.net/punycode/">
-    日本語</a>
-  </p>
-</form>
 <script>
 $( function() {
   $('#c-domain').keyup(function() {
