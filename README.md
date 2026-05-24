@@ -15,5 +15,5 @@ ___
 You can also use Geminispace! (gemini protocol, no Google AI!)
 This is CGI action.
 
-[gemini://g.punycode.net.eu.org/](https://g.punycode.net.eu.org/)
+<gemini://g.punycode.net.eu.org/>
 
